@@ -25,11 +25,39 @@ class WallService {
 
 class AttachmentService {
     var attachments = emptyArray<Attachment>()
-    private var counter: Int = 0
+    private var counter: Long = 0
 
-    fun add(attachment: Attachment): Attachment {
+    fun addVideo(attachment: VideoAttachment): Attachment {
         counter++
-        attachment.id = counter
+        attachment.video.id = counter++
+        attachments += attachment
+        return attachments.last()
+    }
+
+    fun addAudio(attachment: AudioAttachment): Attachment {
+        counter++
+        attachment.audio.id = counter++
+        attachments += attachment
+        return attachments.last()
+    }
+
+    fun addPhoto(attachment: PhotoAttachment): Attachment {
+        counter++
+        attachment.photo.id = counter++
+        attachments += attachment
+        return attachments.last()
+    }
+
+    fun addDocument(attachment: DocumentAttachment): Attachment {
+        counter++
+        attachment.document.id = counter++
+        attachments += attachment
+        return attachments.last()
+    }
+
+    fun addWikiPage(attachment: WikiPageAttachment): Attachment {
+        counter++
+        attachment.wikiPage.id = counter++
         attachments += attachment
         return attachments.last()
     }

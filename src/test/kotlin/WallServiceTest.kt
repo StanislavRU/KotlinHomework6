@@ -8,9 +8,9 @@ class WallServiceTest {
     fun add() {
         val service = WallService()
         val attachments = AttachmentService()
-        val photo = attachments.add(Photo(albumId = 0, userId = 1, ownerId = 2))
         val original = service.add(Post("20.08.2021", "текст поста #1", id = 3,
-            attachment = attachments.add(Photo(albumId = 0, userId = 1, ownerId = 2))))
+            attachment = attachments.addVideo(VideoAttachment(video = Video(0, 0, "Видеоролик",
+                "нет описания")))))
         val expected = original.copy(id=1)
         assertEquals(expected, original)
     }
